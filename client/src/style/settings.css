@@ -1,0 +1,99 @@
+.settings {
+  background-color: rgb(253, 247, 237);
+  display: flex;
+}
+
+.settingsWrapper {
+  flex: 9;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.settingsForm {
+  margin: 0 50px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.settingsProfileLabel {
+  margin: 0 0 20px 0;
+  font-size: 40px;
+  text-decoration: underline;
+}
+.settingsProfile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.settingsPPic {
+  width: 100px;
+  border-radius: 40%;
+  height: 90px;
+  object-fit: cover;
+}
+.setttingsInputFile {
+  display: none;
+}
+
+.settngsUpdatepp {
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 70px;
+  top: 70px;
+  border-radius: 50%;
+}
+.settingsProfile label {
+  margin: 15px 0 6px;
+  font-size: 20px;
+}
+.settingsProfile input {
+  height: 25px;
+  /* width: 70%; */
+  background-color: rgb(244, 244, 228);
+  border: none;
+  border-bottom: 1px solid rgb(255, 255, 7);
+}
+.settingsProfileUpdate{
+   margin: 20px 0 0;
+  height: 30px;
+  width: 20%;
+  cursor: pointer;
+  background-color: rgb(249, 249, 239);
+  color: green;
+  outline: 2px solid green;
+  border: none;
+  border-radius: 10px;
+  align-self: center;
+}
+.settingsProfileUpdate:hover{
+    background-color: teal;
+    color: white;
+}
+
+.settingsPrivacy{
+ margin: 30px 40px 0;
+ display: flex;
+ flex-direction: column;
+}
+
+.TndC{
+    margin-top: 10px;
+    color: rgb(8, 102, 133);
+    cursor: pointer;
+}
+.TndC:hover{
+  color: blue;
+  text-decoration: underline;
+
+}
+.settingsDelete {
+  color: red;
+  padding: 7px;
+  cursor: pointer;
+}
+.settingsDelete:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,59 @@
+.singlepost {
+  margin: 20px;
+  flex: 9;
+}
+
+.singlepostImg {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.singlepostContainer {
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.singlepostTitle {
+  margin: 10px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(109, 67, 67);
+}
+
+.singlepostDescription {
+  font-size: 17px;
+  line-height: 28px;
+  font-family: "Roboto", sans-serif;
+}
+
+.singlepostDescription::first-letter{
+    margin-left: 20px;
+    font-size: 30px;
+  font-family: "Red Rose", cursive;
+}
+
+.singlepostManager {
+  float: right;
+}
+
+.singlepostEditor {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.singlepostEditor:first-child {
+  color: teal;
+}
+
+.singlepostEditor:last-child {
+  color: tomato;
+}
+
+.singlepostPublisher {
+  display: flex;
+  flex-direction: column;
+}

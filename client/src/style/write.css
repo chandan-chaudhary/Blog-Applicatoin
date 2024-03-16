@@ -1,0 +1,63 @@
+
+.write{
+    background-color: rgb(253, 247, 237);
+    padding: 30px 50px;
+    display: flex;
+}
+
+.writeForm{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.writeContainer{
+   margin: 30px;
+   display: flex;
+}
+.writeImg{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.writeUploadFile{
+    font-size: 30px;
+    cursor: pointer;
+
+}
+.writeTitle{
+   border: none;
+  font-size: 30px;
+  width: 600px;
+   margin-left: 10px;
+   background-color: rgb(253, 247, 237);
+}
+.writeTitle:focus{
+  outline: none;
+}
+.writeInputfile{
+    display: none;
+}
+.writeText{
+    font-size: 20px;
+    height: 200px;
+}
+
+.writeSubmit{
+    position: absolute;
+    color: white;
+  background-image: linear-gradient(170deg,rgb(121, 4, 174),rgb(71, 6, 111), rgb(66, 9, 190));
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    float: le;
+   right: 25%;
+   bottom: 10%;
+}
+.writeSubmit:hover{
+    background-image: none;
+    background-color: teal;
+   box-shadow: teal 2px 3px 7px;
+}

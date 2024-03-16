@@ -1,0 +1,52 @@
+/*  */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  background-color: rgb(253, 247, 237);
+  font-family: "Roboto", sans-serif;
+  z-index: 999;
+}
+
+.top-left,
+.top-right {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-icon {
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.top-center {
+  flex: 6;
+}
+.top-centerlist {
+  display: flex;
+  flex: 3;
+  list-style: none;
+  font-weight: 600;
+  margin-left: 80px;
+  cursor: pointer;
+}
+
+.top-centeritem {
+  margin-left: 10px;
+  padding-right: 20px;
+}
+.top-rightitem {
+  margin-left: 10px;
+  display: inline;
+  font-size: large;
+  cursor: pointer;
+}
+.top-profile {
+  width: 30px;
+  padding-left: 40px;
+  cursor: pointer;
+}
+/*  */
