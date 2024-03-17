@@ -2,26 +2,37 @@ import React from 'react';
 import '../style/register.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react'
+import { useState } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import { registerStart, registerSuccess, registerError } from '../redux/userSlice';
 
 export default function Register() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [profilePic, setProfilePic] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
   const [error, setError] = useState(false);
 
+  const user = useSelector((state)=> state.user.userInfo);
+  // console.log('satte:' ,user);
+
+  const dispatch = useDispatch();
+
   const handleRegisterUser = async (e) => {
+    dispatch(registerStart());
     try {
-      setError(false);
       e.preventDefault();
+      setError(false);
       const user = await axios.post('http://127.0.0.1:5500/api/v1/users/register', {
-        username, email, password, confirmPassword
+        username, email, profilePic, password, confirmPassword
       });
-      user.data && window.location.replace('/login');
       console.log(user)
+      dispatch(registerSuccess(user.data));
+      user.data && window.location.replace('/login');
     } catch (err) {
       setError(true);
+      dispatch(registerError());
       console.log(err.response.data.message);
     }
   }
@@ -31,7 +42,7 @@ export default function Register() {
       <div className="registerWrapper">
         <form className="registerForm" onSubmit={handleRegisterUser}>
           <span className="registerInfo"><strong>REGISTER</strong></span>
-          <img className='registerPP' src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" />
+          <img className='registerPP' src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" onChange={(e) => setProfilePic(e.target.value)}/>
           <label htmlFor="inputFile">
             <i className="registerPPUpload fa-solid fa-user-plus"></i>
           </label>

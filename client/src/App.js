@@ -8,8 +8,11 @@ import Login from './Components/Login';
 import Register from './Components/Register';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PageErr from './Components/PageErr';
+import { useSelector} from 'react-redux';
+
 
 function App() {
+  // let user = useSelector((action) => action.user);
   const user = false;
   return (
     <BrowserRouter>
