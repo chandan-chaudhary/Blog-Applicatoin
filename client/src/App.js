@@ -12,8 +12,8 @@ import { useSelector} from 'react-redux';
 
 
 function App() {
-  // let user = useSelector((action) => action.user);
-  const user = false;
+  let user = useSelector((state) => state.user.userInfo);
+  // const user = false;
   return (
     <BrowserRouter>
       <Navbar />

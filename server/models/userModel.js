@@ -6,13 +6,25 @@ const validator = require('validator');
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    // unique: true,
-    required: [true, 'a user must have user name'],
+    unique: true,
+    validate :{
+      validator: function(el){
+       return el.unique == false
+      },
+      message: 'username already exist!',
+    },
+    required: [true, 'username is missing'],
   },
   email: {
     type: String,
     unique: true,
-    required: [true, 'a user must have email'],
+    validate :{
+      validator: function(el){
+       return el.unique == false
+      },
+      message: 'email already exist!',
+    },
+    required: [true, 'email is missing'],
     lowercase: true,
     validate: [validator.isEmail, 'please provide correct email'],
   },

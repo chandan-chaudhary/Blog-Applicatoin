@@ -4,6 +4,7 @@ const postSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, ' a post must have a title'],
+    enum: ['tech', 'food', 'life', 'cryptos', 'music', 'stocks']
   },
   photo: {
     type: String,

@@ -5,9 +5,9 @@ const Router = express.Router();
 const authController = require('./../controller/authController');
 
 Router.route('/register').post(authController.signUp);
-Router.route('/loginUser').get(authController.loginUser);
-Router.route('/forgotpassword').post(authController.forgotPassword);
-Router.route('/resetpassword/:token').patch(authController.resetPassword);
+Router.route('/login').post(authController.loginUser);
+Router.route('/forgot-password').post(authController.forgotPassword);
+Router.route('/reset-password/:token').patch(authController.resetPassword);
 Router.route('/update-personal-account').patch(
   authController.protectRoutes,
   authController.updateAccount

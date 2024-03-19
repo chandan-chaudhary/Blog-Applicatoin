@@ -44,7 +44,7 @@ exports.allPosts = async (req, res) => {
 
 exports.createPost = async (req, res) => {
   try {
-    if (!req.body.user) req.body.user = req.user._id;
+    // if (!req.body.user) req.body.user = req.user._id;
     const post = await Post.create(req.body);
     res.status(201).json({
       status: 'success',

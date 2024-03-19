@@ -15,7 +15,8 @@ export default function Register() {
   const [error, setError] = useState(false);
 
   const user = useSelector((state)=> state.user.userInfo);
-  // console.log('satte:' ,user);
+  const errorMsg = useSelector((state)=> state.user.error);
+  console.log('satte:' ,errorMsg);
 
   const dispatch = useDispatch();
 
@@ -27,13 +28,14 @@ export default function Register() {
       const user = await axios.post('http://127.0.0.1:5500/api/v1/users/register', {
         username, email, profilePic, password, confirmPassword
       });
-      console.log(user)
-      dispatch(registerSuccess(user.data));
+      console.log(user.data)
+      dispatch(registerSuccess(user.data.data));
       user.data && window.location.replace('/login');
     } catch (err) {
       setError(true);
-      dispatch(registerError());
-      console.log(err.response.data.message);
+      const error = err.response.data.message;
+      dispatch(registerError(error));
+      console.log('register-err', err);
     }
   }
 
@@ -56,7 +58,7 @@ export default function Register() {
           <label >Confirm password</label>
           <input type="password" className='registerInput' onChange={(e) => setconfirmPassword(e.target.value)} />
           <button className="registerBtn">Sign up</button>
-          {error && <span style={{ color: "red" }}>Something went Wrong!</span>}
+          {error && <span style={{ color: "red" }}>{errorMsg.split('username:')[1]}</span>}
         </form>
         <div className="registerLogin">
           <Link to='/login'>

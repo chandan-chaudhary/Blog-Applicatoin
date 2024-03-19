@@ -5,7 +5,8 @@ const Router = express.Router();
 
 Router.route('/')
   .get(postController.allPosts)
-  .post(authController.protectRoutes, postController.createPost);
+  .post( postController.createPost);
+  // authController.protectRoutes,
 // Router.use(authController.protectRoutes);
 
 Router.route('/:id')

@@ -7,27 +7,27 @@ export const userSlice = createSlice({
             username: 'deb',
             email: 'chandu@gmail.com',
             profilePic: '',
-            password: '',
-            confirmPassword: ''
         },
         registerStart: false,
-        error: false,
+        error:{
+            error: 'something went worng',
+        }
        
     },
 
     reducers:{
         registerStart: (state) => {
             state.registerStart = true;
-            state.error = false;
         },
         registerSuccess: (state, action)=>{
             state.registerStart = false;
             state.userInfo = action.payload;
         },
-        registerError: (state)=>{
+        registerError: (state, action)=>{
             state.registerStart = false;
-            state.error = true;
-        }
+            state.error = action.payload;
+        },
+        logout: state => {(state = {})},
         
         // register:(state, action)=>{
         //     state.username = action.payload.username;
@@ -36,10 +36,9 @@ export const userSlice = createSlice({
         //     state.password = action.payload.password;
         //     state.confirmPassword = action.payload.confirmPassword;
         // },
-        // logout: (state)=> (state = {}),
     },
 
 });
 
-export const {registerStart, registerSuccess, registerError} = userSlice.actions;
+export const {registerStart, registerSuccess, registerError, logout} = userSlice.actions;
 export default userSlice.reducer;
