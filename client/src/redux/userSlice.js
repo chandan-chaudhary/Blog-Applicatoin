@@ -3,11 +3,7 @@ import { createSlice} from '@reduxjs/toolkit';
 export const userSlice = createSlice({
     name: 'user',
     initialState:{
-        userInfo: {
-            username: 'deb',
-            email: 'chandu@gmail.com',
-            profilePic: '',
-        },
+        userInfo:null,
         registerStart: false,
         error:{
             error: 'something went worng',
@@ -40,5 +36,8 @@ export const userSlice = createSlice({
 
 });
 
-export const {registerStart, registerSuccess, registerError, logout} = userSlice.actions;
+export const {registerStart,
+     registerSuccess,
+      registerError,
+       logout} = userSlice.actions;
 export default userSlice.reducer;

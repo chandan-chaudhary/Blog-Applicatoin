@@ -197,28 +197,29 @@ exports.updateAccount = async (req, res, next) => {
     console.log('updateacc> ', req.user);
     // check if user is logged in
     if (!req.user) throw new Error('Please Login!');
+    console.log('updateacc', req.user.id);
     //  if trying to change password
     if (req.body.password || req.body.confirmPassword)
       throw new Error('You cannot update your password here!');
 
     // filter our user data need to be updated
-    const updateUserData = filterObj(req.body, username, email);
+    const updateUserData = filterObj(req.body, 'username', 'email');
     // check for any file need to be updated
     if (req.file) updateUserData.profilePic = req.file.filename;
-    // find user and update respectibve data
+    // find user and update respective data
     const user = await User.findByIdAndUpdate(req.user.id, updateUserData, {
       new: true,
       runValidators: true,
     });
-    // if (!user) throw new Error('No user found!');
-    user.updatedAt = Date.now();
+     if (!user) throw new Error('No user found!');
+    user.updatedAt = Date.now()
 
     res.status(200).json({
       status: 'success',
       data: user,
     });
   } catch (err) {
-    res.status(400).json({
+    res.status(404).json({
       status: 'fail',
       message: err.message,
     });
@@ -256,23 +257,25 @@ exports.protectRoutes = async (req, res, next) => {
   try {
     // GET TOKEN
     let token;
-    console.log(req.headers);
+    console.log('protect',req.headers);
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith('Bearer')
     ) {
-      token = req.headers.authorization.split(' ')[1];
+       token = req.headers.authorization.split(' ')[1];
+    }else if (req.cookies.jwt) {
+      token = req.cookies.jwt;
     }
 
     if (!token) throw new Error('please login again');
-    console.log(token);
+    console.log('protecttoken',token);
 
     // VERIFY TOKEN
     const verificationID = await promisify(jwt.verify)(
-      token,
+        token,
       process.env.JWT_SECRET_TOKEN
     );
-    console.log(verificationID);
+    console.log('verification',verificationID);
     const loggedUser = await User.findById(verificationID.id);
     if (!loggedUser) throw new Error('No user found');
     // loggedUser.passwordupdated;
