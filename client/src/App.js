@@ -12,7 +12,7 @@ import { useSelector} from 'react-redux';
 
 
 function App() {
-  let user = useSelector((state) => state.user.userInfo);
+  const user = useSelector((state) => state.user.userInfo);
   // const user = false;
   return (
     <BrowserRouter>

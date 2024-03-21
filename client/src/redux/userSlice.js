@@ -27,7 +27,7 @@ export const userSlice = createSlice({
             state.registerStart = false;
             state.error = action.payload;
         },
-        logout: state => {(state = {})},
+        logout: (state) => {state = {}},
         
         // register:(state, action)=>{
         //     state.username = action.payload.username;

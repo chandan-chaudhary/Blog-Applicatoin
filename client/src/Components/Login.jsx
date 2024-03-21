@@ -12,7 +12,7 @@ export default function Login() {
   const [error, setError] = useState(false);
 
     const user = useSelector(state => state.user.userInfo);
-  console.log(user);
+  console.log('log user',user);
   const errorMsg = useSelector(state => state.error);
   const dispatch = useDispatch();
 

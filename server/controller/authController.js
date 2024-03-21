@@ -112,7 +112,7 @@ exports.forgotPassword = async (req, res) => {
   } catch (err) {
     //  we need to set these field to undefined bcoz mail was not sent successfully. yet these field were updated
     user.passwordResetToken = undefined;
-    user.passwordExpiresIn = undefined;
+    user.passwordResetExpiresIn = undefined;
     res.status(404).json({
       status: 'fail',
       message: err.message,
