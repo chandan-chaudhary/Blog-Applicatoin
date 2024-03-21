@@ -3,7 +3,7 @@ import { createSlice} from '@reduxjs/toolkit';
 export const userSlice = createSlice({
     name: 'user',
     initialState:{
-        userInfo:null,
+        userInfo:{},
         registerStart: false,
         error:{
             error: 'something went worng',
@@ -23,7 +23,9 @@ export const userSlice = createSlice({
             state.registerStart = false;
             state.error = action.payload;
         },
-        logout: (state) => {state = {}},
+        logout: (state, action) => {
+            return  {}
+        },
         
         // register:(state, action)=>{
         //     state.username = action.payload.username;

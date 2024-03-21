@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 // OWN FILES
 const postRouter = require('./routes/postRoutes');
@@ -10,6 +11,7 @@ const categoryRouter = require('./routes/categoryRoutes');
 
 const app = express();
 app.use(cors());
+app.use(cookieParser());
 
 // serve static file
 app.use(express.static(path.join(__dirname, 'public')));

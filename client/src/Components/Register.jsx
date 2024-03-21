@@ -21,7 +21,7 @@ export default function Register() {
   const dispatch = useDispatch();
 
   const handleRegisterUser = async (e) => {
-    dispatch(registerStart());
+    // dispatch(registerStart());
     try {
       e.preventDefault();
       setError(false);
@@ -29,12 +29,12 @@ export default function Register() {
         username, email, profilePic, password, confirmPassword
       });
       console.log(user.data)
-      dispatch(registerSuccess(user.data.data));
+      // dispatch(registerSuccess(user.data.data));
       user.data && window.location.replace('/login');
     } catch (err) {
       setError(true);
       const error = err.response.data.message;
-      dispatch(registerError(error));
+      // dispatch(registerError(error));
       console.log('register-err', err);
     }
   }

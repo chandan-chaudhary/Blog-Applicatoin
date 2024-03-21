@@ -27,6 +27,7 @@ export default function Login() {
       );
       console.log('atlogin',login.data);
       dispatch(registerSuccess(login.data));
+      login.data && window.location.replace('/');
     } catch (err) {
       setError(true);
       console.log(err);

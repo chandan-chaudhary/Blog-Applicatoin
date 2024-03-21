@@ -7,10 +7,11 @@ import { useDispatch, useSelector} from 'react-redux';
 import { logout } from "../redux/userSlice";
 
 export const Navbar = () => {
-  let userCheck = true;
+  // let userCheck = true;
 
   // state selector
   const user = useSelector((state)=> state.user.userInfo);
+  console.log('nav',user);
   // dispatcher
   const dispatch = useDispatch();
 
@@ -21,7 +22,7 @@ export const Navbar = () => {
   const handleLogout = (e)=>{
     e.preventDefault();
     dispatch(logout());
-    userCheck = false;
+    // userCheck = false;
     window.location.replace('/login');
   }
   return (
@@ -47,7 +48,7 @@ export const Navbar = () => {
             <Link className="link" to="/writeblog" >Update</Link>
           </li>
           <li className="top-centeritem">
-            {userCheck &&
+            {user &&
               <Link className="link" to="/login" onClick={handleLogout}>Logout</Link>
              }
           </li>
@@ -56,12 +57,12 @@ export const Navbar = () => {
       <div className="top-right">
         <i className="fa-solid fa-magnifying-glass top-rightitem"></i>
         {
-          userCheck ?
+          user ?
             <>
               <Link className="link" to="/settings">
                 <img className="top-profile" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="profile" />
               </Link>
-              <span className="top-rightitem">{user.username}</span>
+              <span className="top-rightitem">{user.data.username}</span>
             </>
              :
               <div className="top-right">
