@@ -26,6 +26,7 @@ export default function Login() {
         { email, password }
       );
       console.log('atlogin',login.data);
+      localstorage.setItem("token",login.data)
       dispatch(registerSuccess(login.data));
       login.data && window.location.replace('/');
     } catch (err) {
