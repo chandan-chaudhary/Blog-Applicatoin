@@ -3,17 +3,21 @@ import "../style/login.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import {useDispatch, useSelector} from 'react-redux';
-import { registerStart, registerSuccess, registerError } from '../redux/userSlice';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  registerStart,
+  registerSuccess,
+  registerError,
+} from "../redux/userSlice";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-    const user = useSelector(state => state.user.userInfo);
-  console.log('log user',user);
-  const errorMsg = useSelector(state => state.error);
+  const user = useSelector((state) => state.user.userInfo);
+  console.log("log user", user);
+  const errorMsg = useSelector((state) => state.error);
   const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
@@ -22,13 +26,12 @@ export default function Login() {
       setError(false);
       dispatch(registerStart());
       const login = await axios.post(
-        "http://127.0.0.1:5500/api/v1/users/login",
+        "http://localhost:5500/api/v1/users/login",
         { email, password }
       );
-      console.log('atlogin',login.data);
-      localstorage.setItem("token",login.data)
+      localStorage.setItem("token", login.data.token);
       dispatch(registerSuccess(login.data));
-      login.data && window.location.replace('/');
+      login.data && window.location.replace("/");
     } catch (err) {
       setError(true);
       console.log(err);
