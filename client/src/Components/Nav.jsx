@@ -1,13 +1,15 @@
 import React from "react";
 import '../style/topbar.css'
 import { Link } from "react-router-dom";
-// eslint-disable-next-line
 import { useDispatch, useSelector} from 'react-redux';
-// eslint-disable-next-line
 import { logout } from "../redux/userSlice";
+import {useLocation} from "react-router-dom";
+import Post from "./Post";
 
 export const Navbar = () => {
   // let userCheck = true;
+  const location = useLocation();
+  console.log(location);
 
   // state selector
   const user = useSelector((state)=> state.user.userInfo);
@@ -39,14 +41,14 @@ export const Navbar = () => {
             <Link className="link" to="/" >Home</Link>
           </li>
           <li className="top-centeritem">
-            <Link className="link" to="/post/:postId" >Blog</Link>
+            <Link className="link" to={`${user ? '/?user=' + user.data.username : ''}`} >blog</Link>
           </li>
           <li className="top-centeritem">
             <Link className="link" to="/writeblog" >Write</Link>
           </li>
-          <li className="top-centeritem">
-            <Link className="link" to="/writeblog" >Update</Link>
-          </li>
+          {/*<li className="top-centeritem">*/}
+          {/*  <Link className="link" to="/update" >Update</Link>*/}
+          {/*</li>*/}
           <li className="top-centeritem">
             {user &&
               <Link className="link" to="/login" onClick={handleLogout}>Logout</Link>

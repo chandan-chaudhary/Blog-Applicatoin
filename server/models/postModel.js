@@ -26,6 +26,8 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: new Date().toDateString(),
   },
+},{
+  timestamps: true,
 });
 
 postSchema.pre(/^find/, function (next) {

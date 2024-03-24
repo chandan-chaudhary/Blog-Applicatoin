@@ -3,10 +3,12 @@ import { useLocation, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../style/singlepost.css'
+import Update from "./Update";
 
 
 export default function Singlepost() {
     const [post, setpost] = useState([]);
+
     const location = useLocation();
     const pathname = location.pathname.split('/')[2];
     // console.log(pathname);
@@ -15,10 +17,16 @@ export default function Singlepost() {
         const getPost = async () => {
             const res = await axios.get(`http://127.0.0.1:5500/api/v1/posts/${pathname}`);
             console.log(res);
+            localStorage.setItem('post', JSON.stringify(res.data.data.post));
             setpost(res.data.data.post);
         };
         getPost();
     }, [pathname]);
+  // const handleEdit =(e)=>{
+  //     e.preventDefault();
+  //     <Update />
+  // }
+
 
     return (
         <>
@@ -29,7 +37,9 @@ export default function Singlepost() {
                     <p className="singlepostDescription">{post.description}</p>
                 </div>
                 <div className="singlepostManager">
-                    <i className="  singlepostEditor fa-solid fa-pen-nib"></i>
+                    <Link className="link" to='/update'>
+                        <i className="  singlepostEditor fa-solid fa-pen-nib" ></i>
+                     </Link>
                     <i className="singlepostEditor  fa-solid fa-trash"></i>
                 </div>
                 <div className="singlepostPublisher">

@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Single from './Components/Single';
 import Write from './Components/Write';
 import Settings from './Components/Settings';
+import Update from './Components/Update';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -24,6 +25,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/settings" element={user ? <Settings /> : <Register />} />
         <Route path="/writeblog" element={user ? <Write /> : <Register />} />
+        <Route path="/update" element={user ? <Update /> : <Register />} />
+
         <Route path="/*" element={<PageErr />} />
       </Routes>
     </BrowserRouter>

@@ -267,7 +267,7 @@ exports.protectRoutes = async (req, res, next) => {
       token = req.cookies.jwt;
     }
 
-    if (!token) throw new Error('please login again');
+    if (!token) throw new Error('please login again!');
     console.log('protecttoken',token);
 
     // VERIFY TOKEN
