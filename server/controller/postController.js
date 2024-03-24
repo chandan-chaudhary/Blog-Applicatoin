@@ -80,11 +80,11 @@ module.exports.getSinglePost = async (req, res) => {
 };
 module.exports.updatePost = async (req, res) => {
   try {
+    console.log('updatePost',req.params.id);
     const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
-
     res.status(200).json({
       status: 'success',
       data: {

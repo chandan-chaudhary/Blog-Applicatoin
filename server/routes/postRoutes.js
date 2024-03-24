@@ -11,6 +11,6 @@ Router.route('/')
 
 Router.route('/:id')
   .get(postController.getSinglePost)
-  .patch(postController.updatePost)
-  .delete(postController.deletePost);
+  .patch(authController.protectRoutes,postController.updatePost)
+  .delete(authController.protectRoutes,postController.deletePost);
 module.exports = Router;

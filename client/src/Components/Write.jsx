@@ -33,12 +33,11 @@ export default function Write() {
                        onChange={(e) => setPhoto(e.target.value)}/>
                 <input type="text" placeholder='Title' className='writeTitle'
                        onChange={(e) => setTitle(e.target.value)}/>
-                <label htmlFor="writeInputfile">Summary </label>
-                <input type="text" placeholder='Title' className='writeTitle'
+                <input type="text" placeholder='Summary' className='writeTitle'
                        onChange={(e) => setSummary(e.target.value)}/>
             </div>
             <div className="writeContainer">
-                <textarea placeholder='Describe something...' className='writeTitle writeText'
+                <textarea placeholder='Description..' className='writeTitle writeText'
                           onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
             <button className='writeSubmit'>Publish</button>

@@ -207,9 +207,8 @@ exports.updateAccount = async (req, res, next) => {
     // check for any file need to be updated
     if (req.file) updateUserData.profilePic = req.file.filename;
     // find user and update respective data
-    const user = await User.findByIdAndUpdate(req.user.id, updateUserData, {
+    const user = await User.findByIdAndUpdate(req.user.id, updateUserData,{
       new: true,
-      runValidators: true,
     });
      if (!user) throw new Error('No user found!');
     user.updatedAt = Date.now()

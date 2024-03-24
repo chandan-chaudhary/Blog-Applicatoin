@@ -4,36 +4,38 @@ import '../style/write.css';
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {useLocation} from "react-router-dom";
+// import {useLocation} from "react-router-dom";
 
 export default function Update() {
     const [title, setTitle]= useState('');
-    const [photo, setPhoto]= useState('');
+    // const [photo, setPhoto]= useState('');
     const [summary, setSummary]= useState('');
     const [description, setDescription] = useState('');
-    const location = useLocation();
-    console.log(location);
-    const pathname = location.pathname.split("")[1];
+
     const user = useSelector(state =>state.user.userInfo);
     console.log(user);
     const post = JSON.parse(localStorage.getItem("post"));
+    const token  = localStorage.getItem("token");
     console.log('post', post._id);
 
 
-    // useEffect(()=>{
+
         const handleUpdate = async(e)=>{
             e.preventDefault();
             try{
-                const updatePost = await axios.patch(`http://127.0.0.1:5500/api/v1/posts/${post._id}`, {
-                    title, photo, summary, description
+                const updatePost = await axios.patch(`http://localhost:5500/api/v1/posts/65cb7c4b8f5940c38cd5f097`, {
+                    title, summary, description
+                },{
+                    headers:{
+                        Authorization: `Bearer ${token}`,
+                    }
                 });
                 console.log(updatePost);
 
             }catch(err){
                 console.log(err.message);
             }
-        }
-    // })
+        };
 
     return (
         <div className='write'>
@@ -44,8 +46,7 @@ export default function Update() {
                     <label htmlFor="uploadFile">
                         <i className=" writeUploadFile fa-solid fa-folder-plus"></i>
                     </label>
-                    <input type="file" id='uploadFile' className='writeInputfile' onChange={(e)=>
-                        setPhoto(e.target.value)}/>
+                    <input type="file" id='uploadFile' className='writeInputfile'/>
                     <label htmlFor="writeInputfile">Title </label>
                     <input type="text" placeholder='Title' className='writeTitle'
                            defaultValue={`${post ? post.title : ''}`} onChange={(e)=> setTitle(e.target.value)}/>
