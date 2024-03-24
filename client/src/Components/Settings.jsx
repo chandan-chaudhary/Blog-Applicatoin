@@ -12,14 +12,19 @@ export default function Settings() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   //   const [profilePic, setProfilePic] = useState("");
- const user = useSelector(state => state.user.userInfo);
- console.log("settings", user.data._id);
+  const user = useSelector((state) => state.user.userInfo);
+  let token = localStorage.getItem("token");
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
       const updatedUser = await axios.patch(
-        "http://127.0.0.1:5500/api/v1/users/update-personal-account",
-        { username, email }
+        "http://localhost:5500/api/v1/users/update-personal-account",
+        { username, email },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       console.log(updatedUser);
     } catch (err) {
